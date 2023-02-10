@@ -16,20 +16,23 @@ const headers =   {
 const response = await fetch(url, {method: "GET", headers: headers})
 const result = await response.json();
 ```
+
 # Mongo
+
 `todo` database is used to store data. If you want to use another one edit `./shared/config.js`
 
 ## Run
-Use `npm run watch`
+
+Use `npm start`
 
 ## API scheme
 
-| Method | Endpoint        | Descripción                                                 |
-|--------|-----------------|-------------------------------------------------------------|
-| GET    | ./user/register | Get new api key. Doesn't require apiKey in headers. ё       |
-| PATCH  | ./user/         | Update your data. `firstName` and `lastName` can be updated |
-| DELETE | ./user/         | Delete user data                                            |
-| GET    | ./todo/         | Get array of all todos.                                     |
-| GET    | ./todo/{id}     | Get todo by id                                              |
-| PATCH  | ./todo/{id}     | Update todo by id. `text` and `status` can be updated       |
-| DELETE | ./todo/{id}     | Delete todo by id.                                          |
+| Method | Auth | Endpoint        | Description                                                 |
+|--------|------|-----------------|-------------------------------------------------------------|
+| GET    |  N   | ./user/register | Get new api key. Doesn't require apiKey in headers.         |
+| PATCH  |  Y   | ./user/         | Update your data. `firstName` and `lastName` can be updated |
+| DELETE |  Y   | ./user/         | Delete user data                                            |
+| GET    |  Y   | ./todo/         | Get array of all todos.                                     |
+| GET    |  Y   | ./todo/{id}     | Get todo by id                                              |
+| PATCH  |  Y   | ./todo/{id}     | Update todo by id. `text` and `status` can be updated       |
+| DELETE |  Y   | ./todo/{id}     | Delete todo by id.                                          |
