@@ -1,4 +1,5 @@
 import express from "express"
+import cors from 'cors'
 import createError from "http-errors" // const createError = require("http-errors");
 import path from "path"
 import {fileURLToPath} from 'url';
@@ -34,6 +35,7 @@ app.set("view engine", "pug");
 
 app.use(logger("dev"));
 app.use(express.json());
+app.use(cors())
 app.use(express.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, "public")));
 

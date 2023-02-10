@@ -8,6 +8,7 @@
     "watch": "nodemon --ext *"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "debug": "~2.6.9",
     "express": "^4.18.2",
     "http-errors": "~1.6.3",

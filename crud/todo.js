@@ -6,5 +6,6 @@ export default class todoCRUD {
     static getOne = (filter) => todoModel.findOne(filter).lean()
     static getAll = (filter) => todoModel.find(filter).lean();
     static deleteOne = (filter) => todoModel.deleteOne(filter).lean();
+    static deleteMany = (filter) => todoModel.deleteMany(filter).lean();
     static updateOne = (filter, data) => todoModel.updateOne(filter, data).lean();
 }
