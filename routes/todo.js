@@ -8,10 +8,21 @@ const router = express.Router();
 
 router.get('/:todoId', checkAuth, async (req, res, next) => {
     try {
+        let getTodo
+        let message = 'Success'
         const todoId = req.params.todoId
-        const todo = await todoCRUD.getOne({_id: todoId, userId: req.user._id});
-        if (todo) {
-            return res.send(successfulResponse({data: todo}));
+
+        if (todoId === 'all'){
+            getTodo = await todoCRUD.getAll({userId: req.user._id}, '-userId');
+            message = 'Success. List of your Todos.'
+        }
+        else{
+            getTodo = await todoCRUD.getOne({_id: todoId, userId: req.user._id});
+        }
+
+        if (getTodo) {
+            return res.send(successfulResponse({message: message,
+                data: getTodo}));
         } else {
             const err = Error(`Todo with id '${todoId}' doesn't exist`);
             err.status = 404;
@@ -23,24 +34,13 @@ router.get('/:todoId', checkAuth, async (req, res, next) => {
     }
 });
 
-router.get('/all', checkAuth, async (req, res, next) => {
-    try {
-        const todos = await todoCRUD.getAll({userId: req.user._id}, '-userId');
-        return res.send(successfulResponse({
-            message: `List of your Todos`,
-            data: {todos: todos}
-        }));
-    } catch (error) {
-        return next(error);
-    }
-});
 
 router.post('/', checkAuth, async (req, res, next) => {
     try {
         const todo = await todoCRUD.create({...req.body, userId: req.user._id});
         res.send(successfulResponse({
             message: `Success. Todo created`,
-            data: {todo: todo}
+            data: todo
         }));
     } catch (error) {
         next(error);

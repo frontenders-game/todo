@@ -30,7 +30,7 @@ router.get(`/${REGISTER_PATH}`, async (req, res, next) => {
     }
 });
 
-router.patch('/update', checkAuth, async (req, res, next) => {
+router.patch('/', checkAuth, async (req, res, next) => {
     try {
         const userUpd = await userCRUD.updateOne({apiKey: req.user.apiKey}, {...req.body})
         if (userUpd.acknowledged) {
@@ -51,7 +51,7 @@ router.patch('/update', checkAuth, async (req, res, next) => {
     }
 });
 
-router.delete('/delete', checkAuth, async (req, res, next) => {
+router.delete('/', checkAuth, async (req, res, next) => {
     try {
         const apiKey = req.user.apiKey;
         const userDel = await userCRUD.deleteOne({apiKey})
