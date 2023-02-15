@@ -1,8 +1,7 @@
-# ToDoList api
-
-Use `/user/register` to create api key.
-
-Then pass this key with headers. Code sample
+# ToDoList project api
+Use `/user/register` to create api key.\
+Then pass this key with headers.\
+Code sample:
 
 ``` 
 const key = "8d2f3c1f-0cf3-4b1e-8f59-0c50a45ea145"
@@ -18,19 +17,16 @@ const result = await response.json();
 ```
 
 ## Mongo
-
 Install mongodb. Go to https://www.mongodb.com/docs/manual/installation/ for instructions.\
 Create database `todo` (https://www.mongodb.com/basics/create-database), it will be used to store data.\
 If you want to use another name edit `./shared/config.js`
 
 ## Run
-
 Install dependencies `npm init`\
 And start `npm start`
 Server will start on `5000` port. Edit `./shared/config.js` to change it.
 
 ## API scheme
-
 | Method | Auth | Endpoint       | Description                                                 |
 |--------|------|----------------|-------------------------------------------------------------|
 | GET    | N    | /user/register | Get new api key. Doesn't require apiKey in headers.         |
@@ -43,7 +39,7 @@ Server will start on `5000` port. Edit `./shared/config.js` to change it.
 | DELETE | Y    | /todo/{id}     | Delete todo by id.                                          |
 | DELETE | Y    | /todo/all      | Delete all todos.                                           |
 
-### Response structure:\
+### Response structure:
 `message` - `type: String` server message based on your request.\
 `status` - `type: Boolean` was request fulfilled or not.\
 `data` - `type: Object` or `type: Array` - object or Array of objects with data. Examples below.
