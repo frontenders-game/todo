@@ -43,6 +43,21 @@ Server will start on `5000` port. Edit `./shared/config.js` to change it.
 | DELETE | Y    | /todo/{id}     | Delete todo by id.                                          |
 | DELETE | Y    | /todo/all      | Delete all todos.                                           |
 
+### Response structure:\
+`message` - `type: String` server message based on your request.\
+`status` - `type: Boolean` was request fulfilled or not.\
+`data` - `type: Object` or `type: Array` - object or Array of objects with data. Examples below.
+
+```
+{
+  data: {
+    ...
+  },
+  status: true,
+  message: 'Success.'
+}
+```
+
 ### `todo` endpoint response data example:
 
 ```  
