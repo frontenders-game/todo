@@ -13,7 +13,7 @@ router.get('/:todoId', checkAuth, async (req, res, next) => {
         const todoId = req.params.todoId
 
         if (todoId === 'all'){
-            getTodo = await todoCRUD.getAll({userId: req.user._id}, '-userId');
+            getTodo = await todoCRUD.getAll({userId: req.user._id});
             message = 'Success. List of your Todos.'
         }
         else{

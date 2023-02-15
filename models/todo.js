@@ -16,6 +16,7 @@ const todoSchema = new Schema(
         userId: {
             type: Schema.Types.ObjectId,
             required: true,
+            select: false,
             ref: modelNames.user,
         }
     },

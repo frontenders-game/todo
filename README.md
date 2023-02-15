@@ -61,12 +61,11 @@ Server will start on `5000` port. Edit `./shared/config.js` to change it.
 
 ### `todo` endpoint response data example:
 
-```  
+```
   {
     _id: '63ec331a7875944d8864642e',      
     text: 'Go for a walk',
     isDone: false,
-    userId: '63ec305e9f9c64d23b19754d',   
     createdAt: '2023-02-15T01:19:22.362Z',
     updatedAt: '2023-02-15T01:40:20.019Z'
   } 
@@ -82,5 +81,5 @@ Server will start on `5000` port. Edit `./shared/config.js` to change it.
     apiKey: '89fcac62-0da3-4855-b586-bbcf2a626b60',
     createdAt: '2023-02-15T10:30:13.023Z',
     updatedAt: '2023-02-15T10:30:13.023Z'
-  },
+  }
 ```
