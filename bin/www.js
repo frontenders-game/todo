@@ -3,15 +3,15 @@
 /**
  * Module dependencies.
  */
-import app from '../app.js'
 import http from 'http'
 import Debug from "debug";
+import app from '../app.js'
 import config from "../shared/config.js";
 
 const debug = Debug('backend:server');
-
-
 const port = config.serverPort
+
+
 app.set('port', port);
 
 /**

@@ -1,5 +1,5 @@
 import {model, Schema} from 'mongoose';
-import {modelNames, todoStatus} from "../shared/models.js";
+import modelNames from "../shared/enums.js";
 
 
 const todoSchema = new Schema(
@@ -9,10 +9,9 @@ const todoSchema = new Schema(
             required: true,
             unique: false
         },
-        status: {
-            type: String,
-            default: todoStatus.created,
-            enum: Object.values(todoStatus),
+        isDone: {
+            type: Boolean,
+            default: false
         },
         userId: {
             type: Schema.Types.ObjectId,
@@ -20,7 +19,10 @@ const todoSchema = new Schema(
             ref: modelNames.user,
         }
     },
-    {timestamps: true});
+    {
+        timestamps: true,
+        versionKey: false
+    });
 
 const todoModel = model(modelNames.todo, todoSchema);
 export default todoModel

@@ -1,6 +1,6 @@
 import express from "express"
 import cors from 'cors'
-import createError from "http-errors" // const createError = require("http-errors");
+import createError from "http-errors"
 import path from "path"
 import {fileURLToPath} from 'url';
 import {connectMongoDB, failedResponse} from "./shared/utils.js";

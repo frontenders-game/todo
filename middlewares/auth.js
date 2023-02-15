@@ -1,5 +1,6 @@
 import userCRUD from "../crud/user.js";
 
+
 const checkAuth = async (req, res, next) => {
     try {
         const apiKey = req.header('apiKey');
@@ -17,6 +18,8 @@ const checkAuth = async (req, res, next) => {
             err.status = 404;
             return next(err);
         }
+        // saving user to context
+        req.user = user
         return next();
     } catch (error) {
         return next(error);

@@ -32,20 +32,18 @@ router.get(`/${REGISTER_PATH}`, async (req, res, next) => {
 
 router.patch('/update', checkAuth, async (req, res, next) => {
     try {
-        const apiKey = req.header('apiKey');
-        const userUpd = await userCRUD.updateOne({apiKey}, {...req.body})
-        const user = await userCRUD.getOne({apiKey: apiKey})
+        const userUpd = await userCRUD.updateOne({apiKey: req.user.apiKey}, {...req.body})
         if (userUpd.acknowledged) {
             return res.json(successfulResponse(
                 {
                     message: `Success. User updated`,
-                    data: user
+                    data: req.user
                 }));
         } else {
             return res.json(failedResponse(
                 {
                     message: `Error. Try again. User wasn't updated`,
-                    data: user
+                    data: req.user
                 }));
         }
     } catch (error) {
@@ -55,7 +53,7 @@ router.patch('/update', checkAuth, async (req, res, next) => {
 
 router.delete('/delete', checkAuth, async (req, res, next) => {
     try {
-        const apiKey = req.header('apiKey');
+        const apiKey = req.user.apiKey;
         const userDel = await userCRUD.deleteOne({apiKey})
         if (userDel.acknowledged) {
             return res.json(successfulResponse(

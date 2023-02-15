@@ -1,5 +1,5 @@
 import {model, Schema} from 'mongoose';
-import {modelNames} from "../shared/models.js";
+import modelNames from "../shared/enums.js";
 
 
 const userSchema = new Schema(
@@ -17,7 +17,10 @@ const userSchema = new Schema(
             required: true,
         }
     },
-    {timestamps: true});
+    {
+        timestamps: true,
+        versionKey: false
+    });
 
 
 const userModel = model(modelNames.user, userSchema);
